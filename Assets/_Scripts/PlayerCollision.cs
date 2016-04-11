@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Windows.Forms;
+using System.Drawing;
 
 public class PlayerCollision : MonoBehaviour {
 
@@ -7,12 +9,17 @@ public class PlayerCollision : MonoBehaviour {
 
     void Start()
     {
-        Cursor.visible = false;
         spawnPosition = GameObject.FindWithTag("Spawnpoint").transform.position;
     }
 
     void OnTriggerEnter2D()
     {
+        ResetMouse();
         this.transform.position = spawnPosition;
+    }
+
+    void ResetMouse()
+    {
+        System.Windows.Forms.Cursor.Position = new System.Drawing.Point(1100, 200);
     }
 }
