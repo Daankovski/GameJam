@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class remove : MonoBehaviour {
+public class remove2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
