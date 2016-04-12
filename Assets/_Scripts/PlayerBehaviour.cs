@@ -34,7 +34,7 @@ public class PlayerBehaviour : MonoBehaviour {
         
     }
 
-    void OnCollisionEnter2D(){
+    void OnCollisionExit2D(){
         this.transform.position = spawnPosition;
         playerTrail.enabled = false;
     }
