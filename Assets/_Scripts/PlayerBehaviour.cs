@@ -3,13 +3,13 @@ using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-	// Use this for initialization
+	RectTransform rectTransform;
+
 	void Start () {
-	
+		rectTransform = transform.GetComponent<RectTransform> ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-	
+		rectTransform.sizeDelta  = new Vector2(rectTransform.sizeDelta.x, transform.childCount * 100);
 	}
 }
