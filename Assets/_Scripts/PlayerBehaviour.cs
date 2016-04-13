@@ -34,11 +34,6 @@ public class PlayerBehaviour : MonoBehaviour {
         
     }
 
-    void OnCollisionExit2D(){
-        this.transform.position = spawnPosition;
-        playerTrail.enabled = false;
-    }
-
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.name == "TimeStart" )
         {
@@ -48,6 +43,11 @@ public class PlayerBehaviour : MonoBehaviour {
         else if (col.gameObject.name == "TimeStop") {
             lapTimer.BeginTimer = false;
         }
-        
+
+        if (col.name == "Level_1")
+        {
+            this.transform.position = spawnPosition;
+            playerTrail.enabled = false;
+        }
     }
 }
