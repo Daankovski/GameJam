@@ -68,5 +68,17 @@ public class PlayerBehaviour : MonoBehaviour {
             this.transform.position = spawnPosition;
             playerTrail.enabled = false;
         }
+
+        if (col.name == "Level_2")
+        {
+            this.transform.position = spawnPosition;
+            playerTrail.enabled = false;
+        }
+
+        if (col.name == "Level_3")
+        {
+            this.transform.position = spawnPosition;
+            playerTrail.enabled = false;
+        }
     }
 }
