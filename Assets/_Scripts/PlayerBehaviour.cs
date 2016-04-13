@@ -9,6 +9,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private float moveSpeed;
     private Vector2 spawnPosition;
     private LapTimer lapTimer;
+    private GameObject player;  
 
     void Start() {
         spawnPosition = GameObject.FindWithTag("Spawnpoint").transform.position;
@@ -16,6 +17,11 @@ public class PlayerBehaviour : MonoBehaviour {
         playerTrail = GameObject.Find("Player").GetComponent<TrailRenderer>();
         playerTrail.enabled = false;
         lapTimer = GameObject.Find("TimeText").GetComponent<LapTimer>();
+        player = GameObject.Find("Player");
+        player.GetComponent<SpriteRenderer>().enabled = true;
+        player.GetComponent<PlayerBehaviour>().enabled = true;
+
+
     }
 
 	void Update () {
@@ -42,8 +48,19 @@ public class PlayerBehaviour : MonoBehaviour {
         }
         else if (col.gameObject.name == "TimeStop") {
             lapTimer.BeginTimer = false;
+            player.GetComponent<SpriteRenderer>().enabled = false;
+            player.GetComponent<PlayerBehaviour>().enabled = false;
+            
         }
 
+        if (col.name == "Level_1")
+        {
+            this.transform.position = spawnPosition;
+            playerTrail.enabled = false;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col) {
         if (col.name == "Level_1")
         {
             this.transform.position = spawnPosition;
