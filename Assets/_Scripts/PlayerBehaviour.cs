@@ -9,7 +9,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private float moveSpeed;
     private Vector2 spawnPosition;
     private LapTimer lapTimer;
-    private GameObject player;  
+    private GameObject player; 
 
     void Start() {
         spawnPosition = GameObject.FindWithTag("Spawnpoint").transform.position;
@@ -20,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour {
         player = GameObject.Find("Player");
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerBehaviour>().enabled = true;
+        //playerTrail.GetComponent<Renderer>().sortingLayerName = "Foreground";
 
 
     }
@@ -31,6 +32,7 @@ public class PlayerBehaviour : MonoBehaviour {
             mousePosition = Input.mousePosition;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+            lapTimer.BeginTimer = true;
         }
         else {
             transform.position = spawnPosition;
@@ -43,7 +45,7 @@ public class PlayerBehaviour : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.name == "TimeStart" )
         {
-            lapTimer.BeginTimer = true;
+            
             GameObject.Find("TimeStart").GetComponent<BoxCollider2D>().enabled = false;
         }
         else if (col.gameObject.name == "TimeStop") {
