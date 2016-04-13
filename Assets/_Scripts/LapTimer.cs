@@ -18,9 +18,6 @@ public class LapTimer : MonoBehaviour {
         set{ begin = value; }
     }
 
-
-
-
 	void startLap () {
 		if (begin == true) {
 			startTime = Time.time;
@@ -29,15 +26,15 @@ public class LapTimer : MonoBehaviour {
 
     void Start() {
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
+        timeText.text = lapTime.ToString();
     }
 
 	void Update () {
 
-		//Debug.Log (startTime);
 		if (begin == true) { 
 			lapTime = Time.time - startTime;
+            lapTime = Mathf.Round(lapTime * 100f) / 100f;
             timeText.text = lapTime.ToString();
-			Debug.Log (timeText);
 		}
 	}
 
@@ -65,7 +62,5 @@ public class LapTimer : MonoBehaviour {
 			Debug.Log (lap);
 
 		}
-
-
 	}
 }

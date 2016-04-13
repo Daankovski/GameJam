@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour {
         moveSpeed = .1f;
         playerTrail = GameObject.Find("Player").GetComponent<TrailRenderer>();
         playerTrail.enabled = false;
-        lapTimer = GetComponent<LapTimer>();
+        lapTimer = GameObject.Find("TimeText").GetComponent<LapTimer>();
     }
 
 	void Update () {
@@ -34,23 +34,20 @@ public class PlayerBehaviour : MonoBehaviour {
         
     }
 
-    void OnCollisionEnter2D(){
-        this.transform.position = spawnPosition;
-        playerTrail.enabled = false;
-    }
-
-
-
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.name == "TimeStart" )
         {
             lapTimer.BeginTimer = true;
-            Debug.Log("Hoi");
+            GameObject.Find("TimeStart").GetComponent<BoxCollider2D>().enabled = false;
         }
         else if (col.gameObject.name == "TimeStop") {
             lapTimer.BeginTimer = false;
-            Debug.Log("doei");
         }
-        
+
+        if (col.name == "Level_1")
+        {
+            this.transform.position = spawnPosition;
+            playerTrail.enabled = false;
+        }
     }
 }
