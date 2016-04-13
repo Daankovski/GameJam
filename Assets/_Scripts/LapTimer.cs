@@ -35,6 +35,7 @@ public class LapTimer : MonoBehaviour {
 			lapTime = Time.time - startTime;
             lapTime = Mathf.Round(lapTime * 100f) / 100f;
             timeText.text = lapTime.ToString();
+            timeText.color = Color.white;
 		}
 	}
 
